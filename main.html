@@ -1,0 +1,207 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CID LOGIN AUTH</title>
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/sweetalert2@11/dist/sweetalert2.min.css">
+    <link rel="icon" href="icon.ico">
+
+    <style>
+body, html {
+    height: 100%;
+    margin: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-image: url(FUNNY\ CID\ LOGIN.png);
+    background-size: cover;
+    background-position: center;
+    background-repeat:no-repeat ;
+    font-family: Arial, sans-serif;
+}
+
+.login-container {
+    border-radius: 41px;
+    background-color: rgba(144, 140, 140, 0.5); 
+    box-shadow: 20px 20px 25px black;
+    padding: 20px;
+    width: 350px;
+    max-width: 90%;
+    text-align: center;
+    color: whitesmoke;
+    transition: box-shadow  0.3s ease, transform 0.3s ease;
+}
+
+.login-container:hover {
+    
+    box-shadow: 30px 30px 25px black;
+    transform: translateY(-10px);
+    cursor: pointer;
+
+
+}
+h2 {
+    margin-bottom: 20px;
+    font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
+    text-decoration: underline;
+    text-transform: uppercase;
+    font-weight: bold;
+    letter-spacing: 2px;
+    color: #ffffff;
+    text-shadow: 9px 2px 5px rgba(0,0,0,0.3);
+}
+
+.input-container {
+    margin-bottom: 15px;
+    text-align: left;
+    position: relative;
+    width: 100%;
+}
+.swal2-progress-bar {
+    background-color: #ffcc00 !important;
+}
+
+label {
+    display: block;
+    margin-bottom: 8px;
+    color: whitesmoke;
+    font-family:'Poppins', sans-serif;
+    margin-left: 10px;
+    font-size: 14px;
+    font-weight: 500;
+    letter-spacing: 0.5px;
+    transition: color 0.3s ease, transform 0.3s ease;
+    
+    text-shadow: 3px 1px 2px black;
+
+}
+label:hover { 
+    color: #ffcc00;
+    transform: translateX(5px);
+}
+input {
+    width: 80%;
+    padding: 10px 10px 10px 40px;
+    border: none;
+    margin-left: 10px;
+    border-radius: 20px;
+    background-color: rgba(144, 140, 140, 0.5); 
+    color: rgb(24, 23, 23);
+    font-weight: bold;
+    box-shadow: 5px 10px 10px rgb(42, 40, 40);
+
+}
+.input-container .material-icons { 
+
+    position: absolute;
+    top: 70%;
+    left: 20px;
+    transform: translateY(-50%);
+    color: #ffcc00;
+    font-size: 20px;
+    
+}
+input:focus {
+    box-shadow: 5px 10px 10px rgb(42, 40, 40);
+    transform:translateY(2px);
+
+}
+
+button {
+    width: 50%;
+    padding: 10px;
+    margin-top: 10px;
+    border: none;
+    border-radius: 20px;
+    background-color: rgba(144, 140, 140, 0.5); 
+    color: whitesmoke;
+    font-size: 16px;
+    cursor: pointer;
+    box-shadow: 5px 10px 10px rgb(42, 40, 40);
+    transition: box-shadow 0.3s ease,transform 0.3s ease;
+}
+
+button:hover {
+    box-shadow: 5px 5px 5px rgb(68, 66, 66);
+    transform:translateY(2px);
+}
+
+
+
+    </style>
+</head>
+<body>
+    <audio id="bgMusic" autoplay loop> 
+        <source src="ThemeSong.mp3" type="audio/mpeg">
+        Your browser does not support this audio element
+    </audio>
+    
+    <div class="login-container">
+        <form id="loginForm">
+            <h2>Cid Login</h2>
+            <div class="input-container">
+                <i class="material-icons">person</i>
+                <label for="username"Username>Username</label>
+                <input type="text" id="username" name="username" >
+            </div>
+            <div class="input-container">
+                <i class="material-icons">lock</i>
+
+                <label for="password">Password</label>
+                <input type="password" id="password" name="password" >
+            </div>
+            <button type="submit">Login Now</button>
+        </form>
+    </div>
+   
+</body>
+<script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+
+
+    
+    <script>
+      document.getElementById('loginForm').addEventListener('submit', function(event) {
+            var username = document.getElementById('username').value.trim();
+            var password = document.getElementById('password').value.trim();
+
+            if (!username || !password) {
+                event.preventDefault();
+                var audio = new Audio('gun-shot.mp3')
+                audio.play();
+                Swal.fire({
+                    text: 'Please fill out all fields!',
+                    position: 'top-end',
+                    heightAuto:false,
+                    height:'200px',
+                    padding:'1px',
+                    timerProgressBar: true,
+                    showConfirmButton: false,
+                    width:'250px',
+                    timer: 3000,
+                    backdrop:false
+                });
+            }
+        });
+        document.addEventListener('DOMContentLoaded', function() {
+            const predefinedUsername = 'Admin';
+            const predefinedPassword = '12345678';
+            const loginForm = document.getElementById('loginForm');
+        loginForm.addEventListener('submit', function(event) {
+                event.preventDefault();
+                const username = document.getElementById('username').value;
+                const password = document.getElementById('password').value;
+                const auth = 0; 
+                if (username === predefinedUsername && password === predefinedPassword) {
+                    sessionStorage.setItem('auth', auth);
+                    window.location.href = 'video-area.html';
+                } else {
+                }
+            });
+});
+
+
+
+    </script>
+</html>
